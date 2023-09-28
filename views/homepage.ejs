@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #555;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        
+        .header {
+            text-align: center;
+            color: rgb(7, 226, 226);
+            padding: 10px;
+            background-color: navy;
+            
+        }
+
+        .slideshow-container {
+            max-width: 600px;
+            position: relative;
+            margin: 40px auto 0;
+        }
+
+        .slide {
+            display:flex;
+        }
+
+        .slide img {
+            width: 100%;
+        }
+
+        .btn-container {
+            text-align: center;
+            font-size: x-large;
+            color: red;
+            margin-top: 40px auto 0;
+            background-color: #555;
+            height: 70px;
+            width: 100%;
+            position: relative;
+        }
+
+        .signup-btn, .login-btn {
+            padding: 10px 20px;
+            background-color: black;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .signup-btn:hover, .login-btn:hover {
+            background-color: #40bd16b1;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to AIR QUALITY CHECKING PORTAL</h1>
+    </div>
+
+    <div class="slideshow-container">
+        <div class="slide fade">
+            <img src="https://airquality.lk/wp-content/uploads/2022/04/1.png" alt="Image 1">
+        </div>
+        <div class="slide fade">
+            <img src="https://user-images.githubusercontent.com/74179721/131791083-fca71340-d716-4cbc-810a-2600a4087f02.jpg" alt="Image 2">
+        </div>
+        <div class="slide fade">
+            <img src="https://www.indiacelebrating.com/wp-content/uploads/plant-tree-to-live-pollution-free.jpg" alt="Image 3">
+        </div>
+    </div>
+
+    <div class="btn-container">
+        <P>To proceed further please signup and login</P>
+        <a href="/signup" class="signup-btn">Sign Up</a>
+        <a href="/login" class="login-btn">Log In</a>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            const slides = document.querySelectorAll(".slide");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000); 
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Checker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/free-photo/view-metro-city-buildings-cityscape_53876-14497.jpg?w=1480&t=st=1695573176~exp=1695573776~hmac=edacd73e7376b5625f75ef8b4d3257794d7dc42337dfafc0c6717172182eaf52');
+            background-repeat: no-repeat;
+        }
+
+        .previous {
+            background-color: white;
+            color: black;
+            width: auto;
+            padding: 2px;
+            font-size: medium;
+            text-decoration: none;
+            float: right;
+            margin-top: 2.5%;  
+        }
+        .previous[class=previous]:hover{
+            background-color: red;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            opacity: 0.85;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-weight: bold;
+            color: red;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        h3 {
+            font-weight: bold;
+            background-color: aqua;
+            color: #007BFF;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        h4 {
+            
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-shadow: #ff0000;
+        }
+
+        ul {
+            list-style: none;
+            background-color: #f0f0f0; 
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            
+        }
+
+        p.error {
+            color: #ff0000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<a class="previous" href="/index">Previous page</a> 
+<body>
+    <h1>Check Air Quality</h1>
+    <form>
+        <% if (result) { %>
+        <h2>Air Quality Data:</h2>
+        <h4>
+           <ul> <% if (cityName) { %>
+               <li> <b>City:</b>  <%= cityName %>  
+            <% } %> </li>
+               <li> <b>Air Quality Index (AQI):</b> <%= result.overall_aqi %> </li>
+           </ul>
+        </h4>
+        <h3>Other Air Quality Metrics:</h3>
+        <ul>
+            <li>Carbon monoxide (CO) : <%= result.CO.concentration %> (AQI: <%= result.CO.aqi %>)</li>
+            <li>Nitrogen dioxide (NO2) : <%= result.NO2.concentration %> (AQI: <%= result.NO2.aqi %>)</li>
+            <li>Ozone (O3) : <%= result.O3.concentration %> (AQI: <%= result.O3.aqi %>)</li>
+            <li>Sulfur dioxide (SO2) : <%= result.SO2.concentration %> (AQI: <%= result.SO2.aqi %>)</li>
+            <li>PM2.5: <%= result['PM2.5'].concentration %> (AQI: <%= result['PM2.5'].aqi %>)</li>
+            <li>PM10: <%= result.PM10.concentration %> (AQI: <%= result.PM10.aqi %>)</li>
+        </ul>
+    </form>
+    <% } else if (typeof error !== 'undefined') { %>
+    <p class="error">Error: <%= error %></p>
+    <% } %>
+</body>
+</html>

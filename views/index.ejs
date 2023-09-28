@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Air Quality Checker</title>
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://news.microsoft.com/wp-content/uploads/prod/sites/93/2019/08/city-downtown-park-260259.jpg');
+            
+        }
+
+        h1 {
+            text-align: center;
+            background-color:orange;
+            color: red;
+            padding: 20px;
+            margin-top: 0%;
+        }
+        
+        .logout {
+            background-color: white;
+            color: black;
+            width: auto;
+            padding: 2px;
+            font-size: medium;
+            text-decoration: underline;
+            float: right;
+            margin-top: 2%;  
+        }
+        .logout[class=logout]:hover{
+            background-color: blueviolet;
+        }
+        .wrapper{
+             max-width: auto;
+            background: blue;
+            height: 25px;
+            text-align: left;
+        }
+
+         .marquee {
+             background:green;
+            white-space: nowrap;
+            font-size: larger;
+           
+        }
+        form {
+            max-width: 400px;
+            margin: 130px auto 0;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            position: absolute;
+            
+            left: 50%;
+            transform: translate(-50%, -50%);   
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 94%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #007BFF;
+            border-radius: 3px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: skyblue;
+        }
+
+
+     </style>
+ </head>
+ <a class="logout" href="/">Logout</a> 
+ <body>
+     <% if (username) { %>
+         <h1>Welcome  <%= username %>   !  </h1>
+         <% } %>
+    <div class="wrapper">
+            <marquee behavior="alternate"><span class="marquee">This is a air quality checking website enter your city name to check details!</span></marquee>
+    </div>
+     <form action="/detect" method="post">
+         <label for="cityName">Enter City Name:</label>
+         <input type="text" id="cityName" name="cityName" required>
+         <button type="submit">Check</button> 
+    </form>
+ </body>
+ </html>
